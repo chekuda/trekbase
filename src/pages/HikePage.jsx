@@ -1,0 +1,19 @@
+import React, { Component } from 'react'
+import TopImageBanner from '../components/topImageBanner/topImageBanner'
+import HikeTabs from '../components/hikeTabs/hikeTabs'
+import NavBar from '../components/navBar/navBar'
+import './HikePage.css'
+
+class HikePage extends Component {
+  render() {
+    return (
+      <div className='hike-page-container'>
+        <NavBar/>
+        <TopImageBanner/>
+        <HikeTabs/>
+      </div>
+    )
+  }
+}
+
+export default HikePage

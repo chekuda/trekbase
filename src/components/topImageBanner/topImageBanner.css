@@ -1,0 +1,8 @@
+.top-image-container {
+  width: 100%;
+}
+
+.top-image-container img{
+  width: 100%;
+  height: 300px;
+}
