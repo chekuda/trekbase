@@ -2,4 +2,9 @@
   margin: 10px;
   width: 47%;
   height: 200px;
+  border-radius: 10px;
+}
+.block{
+  padding: 10px;
+  text-align: center;
 }

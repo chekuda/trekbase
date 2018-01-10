@@ -6,10 +6,10 @@ class HikeBlockInfo extends Component {
   constructor(props){
     super(props)
     this.bgColorsArray = {
-      fun: 'green',
-      reach: 'blue',
-      money: 'yellow',
-      tips: 'red'
+      fun: 'rgba(112, 191, 112, 0.7)',
+      reach: 'rgba(121, 185, 218, 0.81)',
+      money: 'rgba(241, 241, 139, 0.69)',
+      tips: 'rgba(249, 90, 90, 0.71)'
     }
   }
 
