@@ -11,7 +11,7 @@ class HikePage extends Component {
       <div className='hike-page-container'>
         <NavBar/>
           <TopImageBanner/>
-          <HikeTabs/>
+          {/* <HikeTabs/> */}
           <HikeGridInfo/>
       </div>
     )

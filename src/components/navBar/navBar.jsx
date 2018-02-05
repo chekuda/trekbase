@@ -18,18 +18,22 @@ class NavBar extends Component {
   render() {
     return (
       <div className='top-nav-bar-container'>
-       <ul className="top-nav-tabs-list">
-          {
-            dummyTabs.map((tab, i) => {
-              const selected = this.state.tabselected === i ? 'active' : 'desactive'
-              return(
-                <li key={i} className={`top-nav-tab ${selected}`} onClick={ () => this.setSelected(i) }>
-                  <div className='top-nav-tab-text'>{ tab }</div>
-                </li>
-              )
-            })
-          }
-        </ul>
+       <div className='container'>
+        <div className='row'>
+          <ul className="top-nav-tabs-list">
+              {
+                dummyTabs.map((tab, i) => {
+                  const selected = this.state.tabselected === i ? 'active' : 'desactive'
+                  return(
+                    <li key={i} className={`top-nav-tab ${selected}`} onClick={ () => this.setSelected(i) }>
+                      <div className='top-nav-tab-text'>{ tab }</div>
+                    </li>
+                  )
+                })
+              }
+            </ul>
+          </div>
+        </div>
       </div>
     )
   }

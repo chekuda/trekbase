@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import './index.css'
 
-import HikePage from './pages/HikePage'
+// import HikePage from './pages/HikePage'
+import HomePage from './pages/HomePage/HomePage'
 
-ReactDOM.render(<HikePage />, document.getElementById('root'))
+ReactDOM.render(<HomePage />, document.getElementById('root'))

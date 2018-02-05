@@ -28,7 +28,11 @@ class HikeGridInfo extends Component {
 
     return (
       <div className='hike-grid-container'>
-        { hikeInfo && hikeInfo.map(info => <HideBlockInfo { ...info }/>) }
+        <div className='container extra-30-padding'>
+          <div className='row'>
+            { hikeInfo && hikeInfo.map((info, i) => <HideBlockInfo key={i} { ...info }/>) }
+          </div>
+        </div>
       </div>
     )
   }

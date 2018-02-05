@@ -18,18 +18,22 @@ class Tabs extends Component {
   render() {
     return (
       <div className='tabs-container'>
-        <ul className="nav-tabs-list">
-          {
-            dummyTabs.map((tab, i) => {
-              const selected = this.state.tabselected === i ? 'active' : 'desactive'
-              return(
-                <li key={i} className={`nav-tab ${selected}`} onClick={ () => this.setSelected(i) }>
-                  <div className='nav-tab-text'>{ tab }</div>
-                </li>
-              )
-            })
-          }
-        </ul>
+        <div className='container'>
+          <div className='row'>
+            <ul className="nav-tabs-list">
+              {
+                dummyTabs.map((tab, i) => {
+                  const selected = this.state.tabselected === i ? 'active' : 'desactive'
+                  return(
+                    <li key={i} className={`nav-tab ${selected}`} onClick={ () => this.setSelected(i) }>
+                      <div className='nav-tab-text'>{ tab }</div>
+                    </li>
+                  )
+                })
+              }
+            </ul>
+          </div>
+        </div>
       </div>
     )
   }

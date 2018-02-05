@@ -32,9 +32,11 @@
     "react/self-closing-comp": 0,
     "react/jsx-wrap-multilines": 0
   },
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "modules": true
     },
     "sourceType": "module"
   }

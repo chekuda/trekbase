@@ -30,10 +30,7 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-            options: {
-              presets: ['es2015', 'react']
-            }
+            loader: 'babel-loader'
           },
           {
             loader: 'eslint-loader'
@@ -71,7 +68,7 @@ const config = {
       })
   ],
   resolve: {
-    extensions: ['.js', '.json', '.jsx'], //Add this in order to dont indicate the extension when import it
+    extensions: ['.js', '.json', '.jsx'] //Add this in order to dont indicate the extension when import it
   }
 }
 
