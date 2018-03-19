@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import './hikeTabs.css'
 
-const dummyTabs = [   'overview','route' ]
-
 class Tabs extends Component {
   constructor(){
     super()

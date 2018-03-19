@@ -6,7 +6,7 @@ class TopImageBanner extends Component {
   render() {
     return (
       <div className='top-image-container'>
-        <img src= 'assets/hikebanners/milfordsoundpanel.png'/>
+        <div className='top-image'></div>
       </div>
     )
   }

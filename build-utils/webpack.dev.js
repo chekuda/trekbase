@@ -9,7 +9,7 @@ const config = {
         use: [
           'style-loader',
           { loader:'css-loader', options: { parser: 'sugars' } },
-          'postcss-loader'
+          // 'postcss-loader'
         ]
       }
     ]
