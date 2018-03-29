@@ -5,13 +5,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 //Common configuration
 const config = {
-  entry: './src/', //this will take all files in the folder but as a entry point index.js by default
   //output file
   output: {
     //Outpuf file name
     filename: 'bundle.js',//create new bundle everytime
     //Path where the output file will be saved
-    path: commonPaths.outputPath
+    path: commonPaths.outputPath,
+    publicPath: '/static' // Need this for express serving our assets.
   },
   module: {
     rules: [
@@ -30,10 +30,7 @@ const config = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
-            options: {
-              presets: ['es2015', 'react']
-            }
+            loader: 'babel-loader'
           },
           {
             loader: 'eslint-loader'
@@ -71,7 +68,7 @@ const config = {
       })
   ],
   resolve: {
-    extensions: ['.js', '.json', '.jsx'], //Add this in order to dont indicate the extension when import it
+    extensions: ['.js', '.json', '.jsx'] //Add this in order to dont indicate the extension when import it
   }
 }
 

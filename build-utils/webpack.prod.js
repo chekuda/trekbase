@@ -3,7 +3,10 @@ const UglifyJsWebpackPlugin = require('uglifyjs-webpack-plugin')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 const config = {
-  //Anding extra functionality by adding this source-map
+  entry: [
+    'babel-polyfill',
+    './shared/index.js'
+  ],
   devtool: 'source-map', //webpack.js.org/configuration/devtool
     module: {
       rules: [
