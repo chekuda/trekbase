@@ -1,42 +1,26 @@
-/* import React from 'react'
-
-import { Provider } from 'react-redux'
-
-import { renderStatic } from 'glamor/server'
-
-import ReactDOMServer from 'react-dom/server'
-
+import React from 'react'
+import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router'
-
-import App from '../../../client/components/App'
-
-import { configureStore } from '../../../client/redux/store'
-
+import { renderStatic } from 'glamor/server'
 import serializeJS from 'serialize-javascript'
+import App from '../../../shared/components/App'
 
 export default (req, res) => {
   const context = {}
-  const initialState = {}
 
-  const store = configureStore(initialState)
-
-  const { html, css, ids = [] } = renderStatic(() => ReactDOMServer.renderToString(
-    <Provider store={store}>
-      <StaticRouter location={req.url} context={context}>
-        <App />
-      </StaticRouter>
-    </Provider>
+  const { html, css, ids = [] } = renderStatic(() => renderToString(
+    <StaticRouter location={req.url} context={context}>
+      <App />
+    </StaticRouter>
   ))
 
   const templateData = {
-    title: 'Invisible Friend',
+    title: 'Hike Page Bruv',
     initialHtml: html,
     initialCSS: css,
-    initialIds: serializeJS(ids),
-    initialJSONState: serializeJS(store.getState(), { isJSON: true })
+    initialIds: serializeJS(ids)
   }
 
   // Render the index.handlebars with the template data.
   res.render('index', templateData)
 }
- */

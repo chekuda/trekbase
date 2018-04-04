@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import './hikeBlockInfo.css'
+
+if (process.browser) require('./hikeBlockInfo.css')
 
 class HikeBlockInfo extends Component {
 

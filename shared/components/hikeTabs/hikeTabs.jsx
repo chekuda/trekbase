@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import './hikeTabs.css'
+
+if (process.browser) require('./hikeTabs.css')
 
 const dummyTabs = [   'overview','route' ]
 

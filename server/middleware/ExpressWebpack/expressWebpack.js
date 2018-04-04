@@ -5,17 +5,18 @@ import webpackConfig from '../../../webpack.config'
 
 export default (server) => {
   // Use this middleware to set up hot module reloading via webpack.
-  const compiler = webpack(webpackConfig)
+  const config = webpackConfig()
+  const compiler = webpack(config)
 
   server.use(webpackDevMiddleware(compiler, {
     hot: true,
-    filename: webpackConfig.output.filename,
+    filename: config.output.filename,
     noInfo: true,
     stats: {
       colors: true
     },
     historyApiFallback: true,
-    publicPath: webpackConfig.output.publicPath
+    publicPath: config.output.publicPath
   }))
 
   server.use(webpackHotMiddleware(compiler, {

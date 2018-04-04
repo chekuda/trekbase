@@ -2,16 +2,17 @@ const webpack = require('webpack')
 const commonPaths = require('./webpack.common-paths')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 //Common configuration
 const config = {
   //output file
   output: {
     //Outpuf file name
-    filename: 'bundle.js',//create new bundle everytime
+    filename: 'bundle.js', //create new bundle everytime
     //Path where the output file will be saved
     path: commonPaths.outputPath,
-    publicPath: '/static' // Need this for express serving our assets.
+    publicPath: '/static/' // Need this for express serving our assets.
   },
   module: {
     rules: [
@@ -40,13 +41,25 @@ const config = {
         //Add font-awesome files
         test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         loader: 'file-loader?name=fonts/[name].[ext]'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
+        ]
       }
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css'
+    }),
     new htmlWebpackPlugin({
-      template: `${commonPaths.srcPath}/index.html`,
-      filename: 'index.html',
+      template: `${commonPaths.srcPath}/index.handlebars`,
+      filename: 'index.handlebars',
+      alwaysWriteToDisk: true,
       inject: 'body'
     }),
      //This will serve all the assets inside public folder

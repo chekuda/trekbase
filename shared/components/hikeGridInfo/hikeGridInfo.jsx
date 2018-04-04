@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HideBlockInfo from '../hikeBlockInfo/hikeBlockInfo'
-import './hikeGridInfo.css'
+if (process.browser) require('./hikeGridInfo.css')
 
 class HikeGridInfo extends Component {
 
@@ -28,7 +28,7 @@ class HikeGridInfo extends Component {
 
     return (
       <div className='hike-grid-container'>
-        { hikeInfo && hikeInfo.map(info => <HideBlockInfo { ...info }/>) }
+        { hikeInfo && hikeInfo.map((info, index) => <HideBlockInfo { ...info } key={index} />) }
       </div>
     )
   }

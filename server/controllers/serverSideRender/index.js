@@ -1,1 +1,1 @@
-export { default as serverSideRender } from './serverSideRender'
+export { default } from './serverSideRender'

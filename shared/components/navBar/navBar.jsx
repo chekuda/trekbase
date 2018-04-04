@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import './navBar.css'
+
+if (process.browser) require('./navBar.css')
 
 const dummyTabs = [ 'home', 'hikes', 'contac us' ]
 

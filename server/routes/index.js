@@ -1,1 +1,1 @@
-export { default as staticRoutes } from './routes'
+export { default } from './routes'

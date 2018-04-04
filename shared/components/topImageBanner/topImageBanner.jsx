@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import './topImageBanner.css'
+
+if (process.browser) require('./topImageBanner.css')
 
 class TopImageBanner extends Component {
 
   render() {
     return (
       <div className='top-image-container'>
-        <img src= 'assets/hikebanners/milfordsoundpanel.png'/>
+        <img src= '/static/assets/hikebanners/milfordsoundpanel.png'/>
       </div>
     )
   }
