@@ -1,14 +1,8 @@
 import React from 'react'
 import { hydrate } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import Router from './config/Router'
+import BrowserRouter from './config/BrowserRouter'
 import configureGlamorStyles from './config/configureGlamorStyles'
-
-import 'bootstrap/dist/css/bootstrap-reboot.min.css'
-import 'bootstrap/dist/css/bootstrap-grid.min.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'font-awesome/css/font-awesome.min.css'
-import './index.css'
 
 // Rehydrate glamor ids from the SSR
 configureGlamorStyles()
@@ -22,11 +16,11 @@ const renderApp = (Component) => {
   )
 }
 
-renderApp(Router)
+renderApp(BrowserRouter)
 
 if (module.hot) {
-  module.hot.accept('./config/Router', () => {
-    const NewRouter = require('./config/Router').default
+  module.hot.accept('./config/BrowserRouter', () => {
+    const NewRouter = require('./config/BrowserRouter').default
     renderApp(NewRouter)
   })
 }

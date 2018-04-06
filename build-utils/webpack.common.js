@@ -1,8 +1,7 @@
 const webpack = require('webpack')
 const commonPaths = require('./webpack.common-paths')
 const htmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 //Common configuration
 const config = {
@@ -40,7 +39,14 @@ const config = {
       },{
         //Add font-awesome files
         test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file-loader?name=fonts/[name].[ext]'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'fonts/[name].[ext]'
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,
@@ -61,24 +67,7 @@ const config = {
       filename: 'index.handlebars',
       alwaysWriteToDisk: true,
       inject: 'body'
-    }),
-     //This will serve all the assets inside public folder
-    //into virtual assets folder within output /dist (dev environment)
-    new CopyWebpackPlugin([
-      { from: './public/', to:'assets' }
-    ]),
-    //Add bootstrap4
-    new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery',
-        Popper: ['popper.js', 'default'],
-        'Tether': 'tether',
-        'window.Tether': 'tether',
-        // In case you imported plugins individually, you must also require them here:
-        Util: "exports-loader?Util!bootstrap/js/dist/util",
-        Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown"
-      })
+    })
   ],
   resolve: {
     extensions: ['.js', '.json', '.jsx'] //Add this in order to dont indicate the extension when import it
