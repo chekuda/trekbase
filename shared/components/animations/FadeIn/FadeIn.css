@@ -1,0 +1,13 @@
+.fade-in{
+  display: block;
+  width: 100%;
+  animation-name: slidein;
+  animation-duration: 3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
+}
+
+@keyframes slidein{
+  from { opacity: 0 }
+  to{ opacity: 1 }
+}

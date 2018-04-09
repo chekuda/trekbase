@@ -13,6 +13,7 @@
     "webpack-defaults": "webpack-defaults"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.3",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",

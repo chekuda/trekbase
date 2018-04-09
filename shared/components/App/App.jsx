@@ -1,10 +1,12 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import HikePage from '../../pages/HikePage'
+if (process.browser) require('./App.css')
+
+import Home from '../../pages/Home'
 
 export default () => (
   <Switch>
-    <Route exact path='/' component={HikePage} />
+    <Route exact path='/' component={Home} />
   </Switch>
 )

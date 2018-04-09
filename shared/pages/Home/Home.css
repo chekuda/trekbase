@@ -1,0 +1,13 @@
+.hike-page-container {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.country:hover{
+  transform: scale3d(1.2,1.2,1);
+  transform-origin: 50% 50%;
+  transition-duration: 1s;
+}
+
