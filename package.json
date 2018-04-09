@@ -6,8 +6,8 @@
   "author": "Jose Luis Checa Exposito <joselchecaexpo@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ENV=dev node --harmony ./server",
-    "build:prod": "ENV=prod webpack --progress --color --config webpack.config.js",
+    "start": "cross-env ENV=dev node --harmony ./server",
+    "build:prod": "cross-env ENV=prod webpack --progress --color --config webpack.config.js",
     "test:jest:watch": "jest --watch",
     "test:jest": "jest",
     "webpack-defaults": "webpack-defaults"
@@ -59,6 +59,8 @@
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0-beta",
     "bundle-buddy-webpack-plugin": "^0.3.0",
+    "cross-env": "^5.1.4",
+    "dotenv": "^5.0.1",
     "enzyme-adapter-react-16": "^1.1.1",
     "express": "^4.16.0",
     "express-handlebars": "^3.0.0",
