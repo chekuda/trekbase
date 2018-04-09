@@ -9,11 +9,11 @@ module.exports = () => {
   return {
     mode: 'development',
     name: 'server',
-    entry: './server/routes/index.js',
+    entry: './server',
     externals: [nodeExternals()],
     output: {
       path: commonPaths.outputPath,
-      filename: 'server-routes.js'
+      filename: 'server.js'
     },
     module: {
       rules: [
