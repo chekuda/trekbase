@@ -6,7 +6,7 @@
   "author": "Jose Luis Checa Exposito <joselchecaexpo@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ENV=dev nodemon --watch server -harmony ./server",
+    "start": "ENV=dev node --harmony ./server",
     "build:prod": "ENV=prod webpack --progress --color --config webpack.config.js",
     "test:jest:watch": "jest --watch",
     "test:jest": "jest",
@@ -22,6 +22,7 @@
     "babel-plugin-transform-regenerator": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-register": "^6.26.0",
+    "chokidar": "^2.0.3",
     "compression-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.7",
@@ -44,7 +45,8 @@
     "webpack": "^4.5.0",
     "webpack-dev-middleware": "^3.1.0",
     "webpack-hot-middleware": "^2.21.2",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "babel-core": "^6.26.0",

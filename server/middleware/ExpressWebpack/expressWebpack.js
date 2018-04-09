@@ -1,26 +1,47 @@
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
-import webpackConfig from '../../../webpack.config'
+import webpackClientConfig from '../../../webpack.config'
+import webpackServerConfig from '../../../webpack.config.server'
 
 export default (server) => {
   // Use this middleware to set up hot module reloading via webpack.
-  const config = webpackConfig()
-  const compiler = webpack(config)
-
+  const clientConfig = webpackClientConfig()
+  const serverConfig = webpackServerConfig()
+  const compiler = webpack([clientConfig, serverConfig])
+  const clientCompiler = compiler.compilers.find(({ name }) => name === 'client')
+  
   server.use(webpackDevMiddleware(compiler, {
     hot: true,
-    filename: config.output.filename,
+    filename: clientConfig.output.filename,
     noInfo: true,
     stats: {
       colors: true
     },
     historyApiFallback: true,
-    publicPath: config.output.publicPath
+    publicPath: clientConfig.output.publicPath,
+    serverSideRender: true
   }))
-
-  server.use(webpackHotMiddleware(compiler, {
+  
+  
+  server.use(webpackHotMiddleware(clientCompiler, {
     log: console.log,
     heartbeat: 10 * 1000
   }))
+  
+  /*
+    JOSE:
+      This is where the magic happens for the SSR hot reload.
+      It will clear the require cache and require in the new files
+      with the new code.
+  */
+  compiler.plugin('done', () => {
+    Object.keys(require.cache).forEach((id) => {
+      // Only delete cache for files in server and shared folders
+      if (/[\/\\](server|shared)[\/\\]/.test(id)) {
+        delete require.cache[id]
+      }
+    })
+  })
+
 }

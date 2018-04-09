@@ -1,0 +1,41 @@
+const webpack = require('webpack')
+const path = require('path')
+const nodeExternals = require('webpack-node-externals')
+const commonPaths = require('./build-utils/webpack.common-paths')
+
+module.exports = () => {
+  console.log('ENVIRONMENT FOR SERVER CONFIG', process.env.ENV)
+
+  return {
+    mode: 'development',
+    name: 'server',
+    entry: './server/routes/index.js',
+    externals: [nodeExternals()],
+    output: {
+      path: commonPaths.outputPath,
+      filename: 'server-routes.js'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'babel-loader'
+            }
+          ]
+        }
+      ]
+    },
+    target: 'node',
+    plugins: [
+      new webpack.IgnorePlugin(/\.(css|less)$/),
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NamedModulesPlugin()
+    ],
+    resolve: {
+      extensions: ['.js', '.json', '.jsx'] //Add this in order to dont indicate the extension when import it
+    }
+  }
+}

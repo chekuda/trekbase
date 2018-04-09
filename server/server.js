@@ -46,7 +46,10 @@ server.use('/static/', express.static('dist'))
 server.use('/public', express.static('public'))
 
 // Serve our routes
-server.use('/', staticRoutes)
+// server.use('/', staticRoutes)
+server.use((req, res, next) => {
+  require('./routes').default(req, res, next)
+})
 
 // catch 404 and forward to error handler
 server.use((req, res, next) => {
@@ -67,3 +70,5 @@ server.use((err, req, res, next) => {
 server.listen(port, () => {
   console.log(`Listening on port: ${port}`)
 })
+
+export default server
