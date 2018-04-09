@@ -1,18 +1,25 @@
+const webpack = require('webpack')
 const commonPaths = require('./webpack.common-paths')
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
+
+const hardDiskPlugin = new HtmlWebpackHarddiskPlugin({
+  outputPath: commonPaths.outputPath
+})
 
 const config = {
-  devtool: 'source-map', //webpack.js.org/configuration/devtool
-  module:{
-    rules: [
-      {
-        test: /\.css/,
-        use: [
-          'style-loader',
-          { loader:'css-loader', options: { parser: 'sugars' } },
-          'postcss-loader'
-        ]
-      }
-    ]
-  }
+  entry: [
+    'babel-polyfill',
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
+    './shared/index.js'
+  ],
+  devtool: 'source-map',
+  plugins: [
+    hardDiskPlugin,
+    new webpack.LoaderOptionsPlugin({ options: {} }),
+    new webpack.ProgressPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  mode: 'development'
 }
 module.exports  = config

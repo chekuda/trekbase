@@ -10,7 +10,7 @@ module.exports = (env) => {
   const envConfig = require(`./build-utils/webpack.${process.env.ENV}.js`)
 
   //merge all the configuration in one
-  const mergedConfig = webpackMerge(commonConfig, envConfig)
+  const mergedConfig = webpackMerge({ name: 'client' }, commonConfig, envConfig)
   //console.log(mergedConfig)
 
   //This is were all the file to be introduce in the bundle file
