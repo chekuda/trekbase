@@ -43,6 +43,7 @@ server.use(morgan('dev'))
 
 // Lets make our assets in dist static
 server.use('/static/', express.static('dist'))
+server.use('/public', express.static('public'))
 
 // Serve our routes
 server.use('/', staticRoutes)
