@@ -11,7 +11,8 @@ const config = {
     'babel-polyfill',
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    './shared/index.js'
+    './shared/index.js',
+    './shared/styles/index.scss'
   ],
   devtool: 'source-map',
   plugins: [

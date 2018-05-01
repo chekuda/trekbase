@@ -1,10 +1,14 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import { ThemeProvider } from 'glamorous'
+import themeVariables from '../../styles/theme'
 
-import HikePage from '../../pages/HikePage'
+import Homepage from '../../pages/Homepage'
 
 export default () => (
-  <Switch>
-    <Route exact path='/' component={HikePage} />
-  </Switch>
+  <ThemeProvider theme={themeVariables}>
+    <Switch>
+      <Route exact path='/' component={Homepage} />
+    </Switch>
+  </ThemeProvider>
 )

@@ -4,7 +4,8 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const config = {
   entry: [
     'babel-polyfill',
-    './shared/index.js'
+    './shared/index.js',
+    './shared/styles/index.scss'
   ],
   devtool: 'source-map', //webpack.js.org/configuration/devtool
   plugins: [
