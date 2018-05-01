@@ -68,6 +68,7 @@
     "font-awesome": "^4.7.0",
     "glamor": "^2.20.40",
     "glamorous": "^4.12.1",
+    "gsap": "^1.20.4",
     "jquery": "3.0.0",
     "morgan": "^1.9.0",
     "nodemon": "^1.12.1",
@@ -82,6 +83,7 @@
     "react-router-dom": "^4.2.2",
     "serialize-javascript": "^1.4.0",
     "three": "^0.92.0",
+    "three-loaders-collada": "^1.0.2",
     "uglifyjs-webpack-plugin": "^1.0.0-beta.2",
     "webpack-bundle-analyzer": "^2.9.0"
   },

@@ -1,4 +1,6 @@
 export {
   requestAnimationFrame,
-  cancelAnimationFrame
+  cancelAnimationFrame,
+  throttle,
+  setModelMaterial
 } from './utils'
