@@ -81,7 +81,7 @@ export default class WorldMap extends PureComponent {
 
       this.scene.add(scene)
 
-      TweenLite.to(scene.material, 2, { opacity: 1 })
+      TweenLite.to(scene.material, 2, { opacity: 1, delay: 2 })
     })
   }
 
