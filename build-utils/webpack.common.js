@@ -51,9 +51,20 @@ const config = {
       {
         test: /\.css$/,
         use: [
+          'extracted-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        loader: [
+          'extracted-loader',
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader?sourceMap'
         ]
       }
     ]
@@ -70,7 +81,7 @@ const config = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.json', '.jsx'] //Add this in order to dont indicate the extension when import it
+    extensions: ['.js', '.json', '.jsx']
   }
 }
 

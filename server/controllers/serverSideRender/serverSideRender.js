@@ -15,7 +15,7 @@ export default (req, res) => {
   ))
 
   const templateData = {
-    title: 'Hike Page Bruv',
+    title: 'Trekbase',
     initialHtml: html,
     initialCSS: css,
     initialIds: serializeJS(ids)

@@ -38,7 +38,7 @@ export default (server) => {
   compiler.plugin('done', () => {
     Object.keys(require.cache).forEach((id) => {
       // Only delete cache for files in server and shared folders
-      if (/[\/\\](server|shared)[\/\\]/.test(id)) {
+      if (!/[\/\\]node_modules[\/\\]/.test(id)) {
         delete require.cache[id]
       }
     })
