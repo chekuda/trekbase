@@ -96,7 +96,7 @@ export default class WorldMap extends PureComponent {
 
       scene.position.set(0, 0, -9)
       scene.scale.set(1, 1, 1)
-      scene.rotation.x = degreesToRadians(-30)
+      scene.rotation.x = degreesToRadians(-90)
 
       const color = 0x29CC01
 
