@@ -7,7 +7,7 @@ import path from 'path'
 
 const isDev = process.env.ENV !== 'prod'
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 
 const server = express()
 
