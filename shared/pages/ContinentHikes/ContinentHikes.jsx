@@ -16,7 +16,6 @@ const mapStateToProps = ({ mapReducer }) => ({
 })
 
 export default connect(
-  mapStateToProps,
-  undefined
+  mapStateToProps
 )(ContinentHikes)
 
