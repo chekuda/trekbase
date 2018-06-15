@@ -29,7 +29,7 @@ export default (req, res) => {
     initialHtml: html,
     initialCSS: css,
     initialIds: serializeJS(ids),
-    initialStore: serializeJS(store.getState())
+    initialStore: serializeJS(store.getState(), { isJSON: true })
   }
 
   // Render the index.handlebars with the template data.
