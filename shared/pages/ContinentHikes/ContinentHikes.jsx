@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 export class ContinentHikes extends Component {
-  render () {
+  render() {
     return (
       <div className="continenthikes-page">
-        ContentHikePage
+        ContentHikePage {this.props.name}
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ mapReducer }) => ({
-  mapState: mapReducer
+const mapStateToProps = ({ map }) => ({
+  mapState: map
 })
 
 export default connect(

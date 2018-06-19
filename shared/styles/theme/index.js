@@ -1,8 +1,8 @@
-const COLORS = require('./colors')
+// const COLORS = require('./colors')
 const TYPOG = require('./typography')
 const MEDIA_QUERIES = require('./mediaQueries')
 const BREAK_POINTS = require('./breakpoints')
-const { rgba } = require('polished')
+// const { rgba } = require('polished')
 
 module.exports = {
   // Fonts

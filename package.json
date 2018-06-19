@@ -10,7 +10,8 @@
     "build:prod": "cross-env ENV=prod webpack --progress --color --config webpack.config.js",
     "test:jest:watch": "jest --watch",
     "test:jest": "jest",
-    "webpack-defaults": "webpack-defaults"
+    "webpack-defaults": "webpack-defaults",
+    "eslint": "eslint shared/**"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
@@ -31,6 +32,8 @@
     "eslint": "^4.7.2",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.4.0",
     "extracted-loader": "^1.0.7",
     "file-loader": "^1.1.11",

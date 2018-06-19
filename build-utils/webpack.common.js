@@ -1,31 +1,30 @@
-const webpack = require('webpack')
-const commonPaths = require('./webpack.common-paths')
-const htmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+import commonPaths from './webpack.common-paths'
+import htmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-//Common configuration
+// Common configuration
 const config = {
-  //output file
+  // output file
   output: {
-    //Outpuf file name
-    filename: 'bundle.js', //create new bundle everytime
-    //Path where the output file will be saved
+    // Outpuf file name
+    filename: 'bundle.js', // create new bundle everytime
+    // Path where the output file will be saved
     path: commonPaths.outputPath,
     publicPath: '/static/' // Need this for express serving our assets.
   },
   module: {
     rules: [
       {
-        test: /\.png/, //extension of files to be affected by this rule
+        test: /\.png/, // extension of files to be affected by this rule
         use: [
           {
-            loader:'url-loader', //will conver any assets requested by js or css into B64 string and inject themn in the bundle
-            options:{
-              limit: 30000 //limit of the image
+            loader: 'url-loader', // will conver any assets requested by js or css into B64 string and inject themn in the bundle
+            options: {
+              limit: 30000 // limit of the image
             }
           }
         ]
-      },{
+      }, {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
@@ -36,8 +35,8 @@ const config = {
             loader: 'eslint-loader'
           }
         ]
-      },{
-        //Add font-awesome files
+      }, {
+        // Add font-awesome files
         test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         use: [
           {
