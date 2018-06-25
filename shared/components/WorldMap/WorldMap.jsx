@@ -16,7 +16,7 @@ import { GameLoopManager } from '../../game/managers'
 
 import * as THREE from 'three'
 
-import colladaLoader from 'three-loaders-collada' 
+import colladaLoader from 'three-loaders-collada'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -30,13 +30,13 @@ if (isDev && process.browser) {
 }
 
 export default class WorldMap extends PureComponent {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     // DOM Variables
     this.canvasRef = React.createRef()
     this.reqAnimFrameId = null
-  
+
     // World Map Variables
     this.scene = null
     this.camera = null
@@ -47,7 +47,7 @@ export default class WorldMap extends PureComponent {
     this.gameLoopManager = new GameLoopManager()
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.initialise()
     this.loadAssets()
     this.createLights()
@@ -56,20 +56,20 @@ export default class WorldMap extends PureComponent {
     this.loop()
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.cleanUp()
   }
 
-  initialise = () =>  {
+  initialise = () => {
     const { innerWidth, innerHeight } = window
 
     this.scene = new THREE.Scene()
     this.scene.background = new THREE.Color(0x181D21)
 
     this.createCamera({ innerWidth, innerHeight })
-  
+
     this.renderer = new THREE.WebGLRenderer({ alpha: true, canvas: this.canvasRef.current })
-    this.renderer.setSize( innerWidth, innerHeight )
+    this.renderer.setSize(innerWidth, innerHeight)
   }
 
   createCamera = ({ innerWidth, innerHeight }) => {
@@ -92,7 +92,7 @@ export default class WorldMap extends PureComponent {
         window.continents = scene
       }
 
-      const tweenProps = { opacity: 0 }
+      // const tweenProps = { opacity: 0 }
 
       scene.position.set(0, 0, -9)
       scene.scale.set(1, 1, 1)
@@ -129,7 +129,7 @@ export default class WorldMap extends PureComponent {
     this.scene.add(this.grid)
 
     TweenLite.to(this.grid.material, 2, { opacity: 1 })
-    
+
     if (isDev) {
       window.grid = this.grid
     }
@@ -154,7 +154,7 @@ export default class WorldMap extends PureComponent {
     window.addEventListener('resize', this.handleResize, false)
   }
 
-  handleResize = throttle(() => {    
+  handleResize = throttle(() => {
     const { innerWidth, innerHeight } = window
 
     this.camera.aspect = innerWidth / innerHeight
@@ -183,7 +183,7 @@ export default class WorldMap extends PureComponent {
     cancelAnimationFrame(this.reqAnimFrameId)
   }
 
-  render () {
+  render() {
     return (
       <canvas ref={this.canvasRef} />
     )
