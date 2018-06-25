@@ -11,7 +11,14 @@ import configureStore from '../../../shared/redux/configureStore'
 export default (req, res) => {
   const context = {}
   const initialState = {
-    mapReducer: {}
+    map: {
+      continentSelected: 'europe',
+      center: {
+        lat: 8.41,
+        lng: 10.84
+      },
+      zoom: 6
+    }
   }
 
   const store = configureStore(initialState)

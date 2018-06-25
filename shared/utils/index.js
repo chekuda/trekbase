@@ -1,3 +1,4 @@
 export {
-  throttle
+  throttle,
+  getOffset
 } from './utils'

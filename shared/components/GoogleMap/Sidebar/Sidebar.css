@@ -1,0 +1,6 @@
+.sidebar-container {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: overlay;
+  max-height: 100vh;
+}

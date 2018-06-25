@@ -7,6 +7,9 @@ import { Provider } from 'react-redux'
 
 import configureStore from './redux/configureStore'
 
+import 'bootstrap-4-grid/css/grid.css'
+import 'font-awesome/css/font-awesome.min.css'
+
 // Rehydrate glamor ids from the SSR
 configureGlamorStyles()
 
