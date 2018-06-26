@@ -32,7 +32,7 @@ class SpotCard extends Component {
       <div className="area stars">
         {stars}
         {
-          arrayStars.map((ele, index) => (
+          arrayStars.map((_, index) => (
           <i key={index} className="fa fa-star" aria-hidden="true"></i>
           ))
         }
@@ -100,8 +100,8 @@ class SpotCard extends Component {
             <div className="area name">{text}</div>
             <div className="area hight">Max-hight: {maxAltitude}</div>
             <div className="area routes">Routes: {routes.length}</div>
-            { this.maxHours && <div className="area maxhours">Max hours: {this.maxHours}</div> }
-            { this.minHours && <div className="area minhours">Min hours: {this.minHours}</div>}
+            { this.maxHours !== 0 && <div className="area maxhours">Max hours: {this.maxHours}</div> }
+            { this.minHours !== 0 && <div className="area minhours">Min hours: {this.minHours}</div>}
             <div className="rates">
               {this.drawStars(stars)}
               <div className='area dificulty'>
