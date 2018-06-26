@@ -1,4 +1,6 @@
 export {
   throttle,
-  getOffset
+  getOffset,
+  getMax,
+  getMin
 } from './utils'

@@ -51,21 +51,9 @@ server.use((req, res, next) => {
   require('./routes').default(req, res, next)
 })
 
-// // catch 404 and forward to error handler
-// server.use((req, res, next) => {
-//   const err = new Error('Not Found')
-//   err.status = 404
-//   next(err)
-// })
-
 // Handle internal errors which were missed.
-server.use((err, req, res, next) => {
-  console.log('JOSE STYLE')
+server.use((err, res) => {
   res.status(err.status || 500).send(err.stack)
-  // res.send({
-  //   message: err.stack,
-  //   error: isDev ? err : {}
-  // })
 })
 
 server.listen(port, () => {

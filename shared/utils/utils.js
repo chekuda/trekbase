@@ -25,3 +25,6 @@ export const getOffset = (map, offsetx, offsety) => {
 
   return newCenter
 }
+
+export const getMin = arr => Math.min(...arr)
+export const getMax = arr => Math.max(...arr)

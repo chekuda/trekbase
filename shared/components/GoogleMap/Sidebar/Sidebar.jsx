@@ -23,13 +23,14 @@ export class Sidebar extends Component {
   }
 
   render() {
-    const { spots = [], fitSpotCardOnMap, sideBarState } = this.props
-    const { spotHovered, spotSelected } = sideBarState
+    const { fitSpotCardOnMap, sideBarState } = this.props
+    const { spotHovered, spotSelected, spotsToRender } = sideBarState
 
     return (
       <div className="sidebar-container">
         {
-          spots.map(spot =>
+          spotsToRender
+            && spotsToRender.map(spot =>
             <SpotCard
               key={spot.id}
               spot={spot}

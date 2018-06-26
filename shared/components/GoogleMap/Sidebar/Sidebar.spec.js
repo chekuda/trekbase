@@ -15,26 +15,27 @@ describe('Given a sidebar component', () => {
       component.unmount()
     })
   })
-  describe('when spots have some lenght', () => {
+  describe('when spotsToRender have some lenght', () => {
     it('should render as many sportcards as spot passed', () => {
       const props = {
-        spots: [{ id: 'first' }, { id: 'second' }],
-        sideBarState: {}
+        sideBarState: {
+          spotsToRender: [{ id: 'first' }, { id: 'second' }]
+        }
       }
       const component = shallow(<Sidebar {...props} />)
 
-      expect(component.find('SpotCard').length).toBe(props.spots.length)
+      expect(component.find('SpotCard').length).toBe(props.sideBarState.spotsToRender.length)
       component.unmount()
     })
     describe('and spotSelected is passed', () => {
       it('should render the class selected on the right SpotCard', () => {
         const props = {
-          spots: [{ id: 'first' }, { id: 'second' }],
           sideBarState: {
+            spotsToRender: [{ id: 'first' }, { id: 'second' }],
             spotSelected: 'first'
           }
         }
-        const excpectedResult = props.spots.find(spot => spot.id === props.sideBarState.spotSelected)
+        const excpectedResult = props.sideBarState.spotsToRender.find(spot => spot.id === props.sideBarState.spotSelected)
         const component = shallow(<Sidebar {...props} />)
 
         const spotCards = component.find('SpotCard')
@@ -47,14 +48,15 @@ describe('Given a sidebar component', () => {
     describe('and handleSpotHovered is called', () => {
       it('spotHovered should be called with the rigtht Id', () => {
         const props = {
-          spots: [{ id: 'first' }, { id: 'second' }],
-          sideBarState: {},
+          sideBarState: {
+            spotsToRender: [{ id: 'first' }, { id: 'second' }],
+          },
           spotHovered: jest.fn()
         }
         const component = shallow(<Sidebar {...props} />)
-        component.instance().handleSpotHovered(props.spots[0].id)
+        component.instance().handleSpotHovered(props.sideBarState.spotsToRender[0].id)
 
-        expect(props.spotHovered).toHaveBeenCalledWith({ spotHovered: props.spots[0].id })
+        expect(props.spotHovered).toHaveBeenCalledWith({ spotHovered: props.sideBarState.spotsToRender[0].id })
         component.unmount()
       })
     })

@@ -7,17 +7,14 @@ import { Provider } from 'react-redux'
 
 import App from '../../../shared/components/App'
 import configureStore from '../../../shared/redux/configureStore'
+import dummySpots from '../../dummySpots'
 
 export default (req, res) => {
   const context = {}
   const initialState = {
+    spots: dummySpots(),
     map: {
-      continentSelected: 'europe',
-      center: {
-        lat: 8.41,
-        lng: 10.84
-      },
-      zoom: 6
+      continentSelected: 'europe'
     }
   }
 
