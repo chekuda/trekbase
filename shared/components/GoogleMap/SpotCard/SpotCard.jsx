@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Transition from 'react-transition-group/Transition'
 
 import Carousel from '../../common/Carousel'
+import { getMin, getMax } from '../../../utils'
 
 if (process.browser) {
   require('./SpotCard.css')
@@ -13,6 +14,8 @@ class SpotCard extends Component {
 
     this.myCard = React.createRef()
     this.transitionHasEnded = this.transitionHasEnded.bind(this)
+    this.maxHours = this.props.spot && getMax(this.props.spot.routes.map(({ hours = 0 }) => hours))
+    this.minHours = this.props.spot && getMin(this.props.spot.routes.map(({ hours = 0 }) => hours))
   }
 
   componentDidMount() {
@@ -87,7 +90,7 @@ class SpotCard extends Component {
           onClick={ev => this.onClickPreventBubble(ev, id)}
           onMouseOver={() => onOverSpot(id)}
         >
-          <div className="close" onClick={onClickClose}>
+          <div className="close" onClick={() => onClickClose(null)}>
             <i className="fa fa-close"></i>
           </div>
           <div className="slider">
@@ -96,7 +99,9 @@ class SpotCard extends Component {
           <div className="info">
             <div className="area name">{text}</div>
             <div className="area hight">Max-hight: {maxAltitude}</div>
-            <div className="area routes">Routes: {routes}</div>
+            <div className="area routes">Routes: {routes.length}</div>
+            { this.maxHours && <div className="area maxhours">Max hours: {this.maxHours}</div> }
+            { this.minHours && <div className="area minhours">Min hours: {this.minHours}</div>}
             <div className="rates">
               {this.drawStars(stars)}
               <div className='area dificulty'>

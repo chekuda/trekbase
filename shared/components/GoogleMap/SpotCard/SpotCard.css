@@ -104,10 +104,13 @@
 }
 .spotCard .area {
   display: block;
-  padding: 5px 10px;
+  margin: 5px 10px;
 }
 .spotCard .name {
   font-size: 20px;
+}
+.spotCard .hight {
+  padding-top: 10px;
 }
 .spotCard .rates {
   display: flex;

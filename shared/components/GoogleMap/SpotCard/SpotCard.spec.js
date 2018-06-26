@@ -2,8 +2,9 @@ import React from 'react'
 import { mount } from 'enzyme'
 
 import SpotCard from './SpotCard'
+import { getMin, getMax } from '../../../utils'
 
-describe('SpotCard', () => {
+fdescribe('SpotCard', () => {
   describe('given the SpotCard component with the spots props', () => {
     const props = {
       spot: {
@@ -12,7 +13,7 @@ describe('SpotCard', () => {
         text: 'dummy-text',
         imageList: [],
         maxAltitude: '200m',
-        routes: 2,
+        routes: [{ name: 'first', hours: 9 }, { name: 'second', hours: 8 }],
         id: 'uniqueId'
       },
       spotToRender: true
@@ -39,7 +40,9 @@ describe('SpotCard', () => {
         expect(component.find('.info').length).toBe(1)
         expect(component.find('.info .name').props().children).toBe(props.spot.text)
         expect(component.find('.info .hight').props().children).toEqual(['Max-hight: ', props.spot.maxAltitude])
-        expect(component.find('.info .routes').props().children).toEqual(['Routes: ', props.spot.routes])
+        expect(component.find('.info .routes').props().children).toEqual(['Routes: ', props.spot.routes.length])
+        expect(component.find('.info .maxhours').props().children).toEqual(['Max hours: ', getMax(props.spot.routes.map(({ hours = 0 }) => hours))])
+        expect(component.find('.info .minhours').props().children).toEqual(['Min hours: ', getMin(props.spot.routes.map(({ hours = 0 }) => hours))])
         expect(component.find('.info .fa.fa-star').length).toEqual(props.spot.stars)
         expect(component.find('.info .dificulty .fa-signal').props().className).toEqual(`fa fa-signal ${props.spot.dificulty}`)
       })

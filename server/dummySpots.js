@@ -11,7 +11,7 @@ export default () => ({
       'dificulty': 'easy',
       'maxAltitude': '2000m',
       'stars': 2,
-      'routes': 4,
+      'routes': [{ name: 'first', hours: 10 }, { name: 'second', hours: 10 }],
       'title': 'Whatever whatever whatever'
     },
     {
@@ -23,7 +23,7 @@ export default () => ({
       'dificulty': 'easy',
       'stars': 3,
       'maxAltitude': '2000m',
-      'routes': 4,
+      'routes': [{ name: 'first', hours: 10 }, { name: 'second', hours: 10 }, { name: 'second', hours: 11 }],
       'title': 'Whatever whatever whatever'
     },
     {
@@ -35,7 +35,7 @@ export default () => ({
       'dificulty': 'medium',
       'stars': 1,
       'maxAltitude': '2000m',
-      'routes': 4,
+      'routes': [{ name: 'first', hours: 9 }, { name: 'second', hours: 8 }],
       'title': 'Whatever whatever whatever'
     },
     {
@@ -47,7 +47,7 @@ export default () => ({
       'dificulty': 'dificult',
       'stars': 2,
       'maxAltitude': '2000m',
-      'routes': 4,
+      'routes': [{ name: 'first', hours: 100 }],
       'title': 'Whatever whatever whatever'
     },
     {
@@ -59,7 +59,7 @@ export default () => ({
       'dificulty': 'extreme',
       'stars': 5,
       'maxAltitude': '2000m',
-      'routes': 4,
+      'routes': [{ name: 'first', hours: 9 }, { name: 'second', hours: 8 }],
       'title': 'Whatever whatever whatever'
     },
     {
@@ -71,7 +71,7 @@ export default () => ({
       'dificulty': 'medium',
       'stars': 4,
       'maxAltitude': '2000m',
-      'routes': 4,
+      'routes': [{ name: 'first' }, { name: 'second', hours: 8 }],
       'title': 'Whatever whatever whatever'
     },
     {
@@ -83,7 +83,7 @@ export default () => ({
       'dificulty': 'medium',
       'stars': 4,
       'maxAltitude': '2000m',
-      'routes': 4,
+      'routes': [{ name: 'first', hours: 9 }, { name: 'second', hours: 8 }],
       'title': 'Whatever whatever whatever'
     }
   ]

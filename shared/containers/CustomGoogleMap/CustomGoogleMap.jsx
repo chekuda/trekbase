@@ -15,6 +15,7 @@ export class CustomGoogleMap extends Component {
 
     this.continentSelected = this.props.mapState.continentSelected
     this.state = {
+      allSpots: this.props.allSpots[this.continentSelected] || [],
       cachedSpotSelected: null
     }
     this.mapContainer = React.createRef()
@@ -41,9 +42,7 @@ export class CustomGoogleMap extends Component {
   }
 
   componentDidMount() {
-    const allSpots = this.props.allSpots[this.continentSelected] || []
-
-    if (allSpots.length === 0) return
+    if (this.state.allSpots.length === 0) return
 
     const { setMapView, spotsToRender } = this.props
 
@@ -51,15 +50,15 @@ export class CustomGoogleMap extends Component {
       width: this.mapContainer.current.offsetWidth,
       height: this.mapContainer.current.offsetHeight
     }
-    const { zoom, center } = this.setFirstViewMap(allSpots, size)
+    const { zoom, center } = this.setFirstViewMap(this.state.allSpots, size)
 
     setMapView({ center, zoom })
-    spotsToRender({ spots: allSpots })
+    spotsToRender({ spots: this.state.allSpots })
   }
 
   setSpotsToRender = ({ bounds }) => {
-    const { spotsToRender, mapState } = this.props
-    const newSpotsToRender = mapState.spotsToRender
+    const { spotsToRender } = this.props
+    const newSpotsToRender = this.state.allSpots
       .filter(ele =>
         ele.lat < bounds.ne.lat &&
         ele.lat > bounds.se.lat &&
