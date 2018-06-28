@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 
 import Spot from '../../components/GoogleMap/Spot'
 import Sidebar from '../../components/GoogleMap/Sidebar'
-import { getOffset, getMax, getMin } from '../../utils'
+import { getOffset, spotsWithinBounds } from '../../utils/map'
+import { getMax, getMin } from '../../utils/math'
 import { spotSelection, setMapView, spotsToRender } from '../../redux/reducers/map'
 
 export class CustomGoogleMap extends Component {
@@ -58,13 +59,7 @@ export class CustomGoogleMap extends Component {
 
   setSpotsToRender = ({ bounds }) => {
     const { spotsToRender } = this.props
-    const newSpotsToRender = this.state.allSpots
-      .filter(ele =>
-        ele.lat < bounds.ne.lat &&
-        ele.lat > bounds.se.lat &&
-        ele.lng > bounds.nw.lng &&
-        ele.lng < bounds.se.lng
-      )
+    const newSpotsToRender = spotsWithinBounds(bounds, this.state.allSpots)
 
     spotsToRender({
       spots: newSpotsToRender

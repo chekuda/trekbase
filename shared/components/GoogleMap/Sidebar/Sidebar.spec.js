@@ -12,7 +12,6 @@ describe('Given a sidebar component', () => {
       const component = shallow(<Sidebar {...props} />)
 
       expect(component.find('SpotCard').length).toBe(0)
-      component.unmount()
     })
   })
   describe('when spotsToRender have some lenght', () => {
@@ -25,7 +24,6 @@ describe('Given a sidebar component', () => {
       const component = shallow(<Sidebar {...props} />)
 
       expect(component.find('SpotCard').length).toBe(props.sideBarState.spotsToRender.length)
-      component.unmount()
     })
     describe('and spotSelected is passed', () => {
       it('should render the class selected on the right SpotCard', () => {
@@ -42,7 +40,6 @@ describe('Given a sidebar component', () => {
         const selected = spotCards.findWhere(card => card.props().spotSelected.includes('selected')).props().spot
 
         expect(selected).toEqual(excpectedResult)
-        component.unmount()
       })
     })
     describe('and handleSpotHovered is called', () => {
@@ -57,7 +54,6 @@ describe('Given a sidebar component', () => {
         component.instance().handleSpotHovered(props.sideBarState.spotsToRender[0].id)
 
         expect(props.spotHovered).toHaveBeenCalledWith({ spotHovered: props.sideBarState.spotsToRender[0].id })
-        component.unmount()
       })
     })
   })

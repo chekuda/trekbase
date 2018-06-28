@@ -16,15 +16,12 @@ describe('SpotLabel', () => {
       const component = shallow(<SpotLabel {...props}/>)
       it('should render the spotLabel within markup', () => {
         expect(component.find('.spotLabel').length).toBe(1)
-        component.unmount()
       })
       it('should render the stars area within markup', () => {
         expect(component.find('.area.stars').length).toBe(1)
-        component.unmount()
       })
       it('should render the dificulty area within markup', () => {
         expect(component.find('.area.dificulty').length).toBe(1)
-        component.unmount()
       })
     })
     describe('when star of spot is no passed by props', () => {
@@ -37,7 +34,6 @@ describe('SpotLabel', () => {
       it('spot is rendered with not stars markup', () => {
         expect(component.find('.spotLabel').length).toBe(1)
         expect(component.find('.area.stars').length).toBe(0)
-        component.unmount()
       })
     })
     describe('when dificulty of spot is no passed by props', () => {
@@ -50,7 +46,6 @@ describe('SpotLabel', () => {
       it('spot is rendered with not stars markup', () => {
         expect(component.find('.spotLabel').length).toBe(1)
         expect(component.find('.area.dificulty').length).toBe(0)
-        component.unmount()
       })
     })
     describe('when spot hovered passed', () => {
@@ -64,7 +59,7 @@ describe('SpotLabel', () => {
         const component = shallow(<SpotLabel {...props}/>)
         it('spotLabel should have class onover', () => {
           expect(component.find('.spotLabel.onover').length).toBe(1)
-          component.unmount()
+
         })
       })
       describe('and its different of the spot id passed by props', () => {
@@ -77,7 +72,7 @@ describe('SpotLabel', () => {
         const component = shallow(<SpotLabel {...props}/>)
         it('spotLabel should have class onover', () => {
           expect(component.find('.spotLabel.onover').length).toBe(0)
-          component.unmount()
+
         })
       })
     })
@@ -91,7 +86,6 @@ describe('SpotLabel', () => {
       const component = shallow(<SpotLabel {...props}/>)
       it('status should be added to the classlist of spotLabel', () => {
         expect(component.find(`.spotLabel.${props.status}`).length).toBe(1)
-        component.unmount()
       })
     })
     describe('when user hover the spot', () => {
@@ -106,7 +100,6 @@ describe('SpotLabel', () => {
         component.find('.spotLabel').simulate('mouseOver')
 
         expect(props.onOverSpot).toHaveBeenCalledWith(props.spot.id)
-        component.unmount()
       })
     })
     describe('when user stop hovering the spot', () => {
@@ -121,7 +114,6 @@ describe('SpotLabel', () => {
         component.find('.spotLabel').simulate('mouseLeave')
 
         expect(props.onOverSpot).toHaveBeenCalledWith(undefined)
-        component.unmount()
       })
     })
   })

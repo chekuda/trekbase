@@ -34,7 +34,6 @@ describe('Given a spot component', () => {
       component.find('.spot-container').simulate('click')
 
       expect(newProps.spotSelection).toHaveBeenCalledWith({ spotSelected: newProps.spot.id })
-      component.unmount()
     })
   })
   describe('and handleSpotHovered is called', () => {
@@ -47,7 +46,6 @@ describe('Given a spot component', () => {
       component.instance().handleSpotHovered(newProps.spot.id)
 
       expect(newProps.spotHovered).toHaveBeenCalledWith({ spotHovered: newProps.spot.id })
-      component.unmount()
     })
   })
 })

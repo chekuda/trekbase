@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Transition from 'react-transition-group/Transition'
 
 import Carousel from '../../common/Carousel'
-import { getMin, getMax } from '../../../utils'
+import { getMin, getMax } from '../../../utils/math'
 
 if (process.browser) {
   require('./SpotCard.css')
