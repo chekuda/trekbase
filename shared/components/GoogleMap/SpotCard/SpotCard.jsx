@@ -5,7 +5,7 @@ import Carousel from '../../common/Carousel'
 import { getMin, getMax } from '../../../utils/math'
 
 if (process.browser) {
-  require('./SpotCard.css')
+  require('./SpotCard.scss')
 }
 
 class SpotCard extends Component {

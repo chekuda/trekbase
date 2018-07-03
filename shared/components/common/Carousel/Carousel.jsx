@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import Transition from 'react-transition-group/Transition'
 
 if (process.browser) {
-  require('./Carousel.css')
+  require('./Carousel.scss')
 }
-
 
 class Carousel extends Component {
   constructor(props) {

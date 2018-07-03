@@ -6,7 +6,7 @@ import { spotSelection, spotHovered } from '../../../redux/reducers/map'
 import SpotCard from '../SpotCard'
 
 if (process.browser) {
-  require('./Sidebar.css')
+  require('./Sidebar.scss')
 }
 
 export class Sidebar extends Component {

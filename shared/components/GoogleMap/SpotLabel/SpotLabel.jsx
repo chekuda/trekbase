@@ -1,7 +1,7 @@
 import React from 'react'
 
 if (process.browser) {
-  require('./SpotLabel.css')
+  require('./SpotLabel.scss')
 }
 
 const SpotLabel = ({

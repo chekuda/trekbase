@@ -7,7 +7,7 @@ import SpotCard from '../SpotCard'
 import SpotLabel from '../SpotLabel'
 
 if (process.browser) {
-  require('./Spot.css')
+  require('./Spot.scss')
 }
 
 export class Spot extends Component {

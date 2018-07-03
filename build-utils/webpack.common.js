@@ -53,7 +53,7 @@ const config = {
       },
       {
         test: /\.scss$/,
-        loader: [
+        use: [
           'extracted-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
