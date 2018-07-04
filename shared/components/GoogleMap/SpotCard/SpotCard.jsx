@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Transition from 'react-transition-group/Transition'
+import classNames from 'classnames'
 
 import Carousel from '../../common/Carousel'
+import SpotInfo from '../../common/SpotInfo'
 import { getMin, getMax } from '../../../utils/math'
 
 if (process.browser) {
@@ -24,20 +26,6 @@ class SpotCard extends Component {
 
   componentWillUnmount() {
     this.myCard.current.removeEventListener('transitionend', this.transitionHasEnded, false)
-  }
-
-  drawStars(stars = 0) {
-    const arrayStars = Array(stars).fill(1)
-    return (
-      <div className="area stars">
-        {stars}
-        {
-          arrayStars.map((_, index) => (
-          <i key={index} className="fa fa-star" aria-hidden="true"></i>
-          ))
-        }
-      </div>
-    )
   }
 
   noop = () => {}
@@ -86,27 +74,25 @@ class SpotCard extends Component {
         status =>
         <div
           ref={this.myCard}
-          className={`spotCard ${status} ${spotSelected} ${isHovered}`}
+          className={classNames('spotCard', status, spotSelected, isHovered)}
           onClick={ev => this.onClickPreventBubble(ev, id)}
           onMouseOver={() => onOverSpot(id)}
         >
-          <div className="close" onClick={() => onClickClose(null)}>
-            <i className="fa fa-close"></i>
+          <div className='close' onClick={() => onClickClose(null)}>
+            <i className='fa fa-close'></i>
           </div>
-          <div className="slider">
+          <div className='slider'>
             <Carousel spot={spot}/>
           </div>
-          <div className="info">
-            <div className="area name">{text}</div>
-            <div className="area hight">Max-hight: {maxAltitude}</div>
-            <div className="area routes">Routes: {routes.length}</div>
-            { this.maxHours !== 0 && <div className="area maxhours">Max hours: {this.maxHours}</div> }
-            { this.minHours !== 0 && <div className="area minhours">Min hours: {this.minHours}</div>}
-            <div className="rates">
-              {this.drawStars(stars)}
-              <div className='area dificulty'>
-                <i className={`fa fa-signal ${dificulty}`}></i>
-              </div>
+          <div className='info'>
+            <SpotInfo text={text} customClasses='font-20'/>
+            { maxAltitude && <SpotInfo text={maxAltitude} description='Max-hight:'/> }
+            { routes.length && <SpotInfo text={routes.length} description='Routes:'/> }
+            { this.maxHours !== 0 && <SpotInfo text={this.maxHours} description='Max hours:'/> }
+            { this.minHours !== 0 && <SpotInfo text={this.minHours} description='Min hours:'/> }
+            <div className='rates'>
+              { stars && <SpotInfo text={stars} customClasses='stars' totalIcons={stars} iconClass={'fa fa-star'}/> }
+              { dificulty && <SpotInfo totalIcons={1} customClasses='font-20' iconClass={['fa', 'fa-signal', dificulty]}/> }
             </div>
           </div>
         </div>

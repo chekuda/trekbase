@@ -2,16 +2,14 @@ import React from 'react'
 import { mount } from 'enzyme'
 
 import SpotCard from './SpotCard'
-import { getMin, getMax } from '../../../utils'
 
-fdescribe('SpotCard', () => {
+describe('SpotCard', () => {
   describe('given the SpotCard component with the spots props', () => {
     const props = {
       spot: {
         dificulty: 1,
         stars: 2,
         text: 'dummy-text',
-        imageList: [],
         maxAltitude: '200m',
         routes: [{ name: 'first', hours: 9 }, { name: 'second', hours: 8 }],
         id: 'uniqueId'
@@ -36,15 +34,12 @@ fdescribe('SpotCard', () => {
         expect(component.find('.slider').length).toBe(1)
         expect(component.find('Carousel').length).toBe(1)
       })
-      it('info block markup should be rendered', () => {
-        expect(component.find('.info').length).toBe(1)
-        expect(component.find('.info .name').props().children).toBe(props.spot.text)
-        expect(component.find('.info .hight').props().children).toEqual(['Max-hight: ', props.spot.maxAltitude])
-        expect(component.find('.info .routes').props().children).toEqual(['Routes: ', props.spot.routes.length])
-        expect(component.find('.info .maxhours').props().children).toEqual(['Max hours: ', getMax(props.spot.routes.map(({ hours = 0 }) => hours))])
-        expect(component.find('.info .minhours').props().children).toEqual(['Min hours: ', getMin(props.spot.routes.map(({ hours = 0 }) => hours))])
-        expect(component.find('.info .fa.fa-star').length).toEqual(props.spot.stars)
-        expect(component.find('.info .dificulty .fa-signal').props().className).toEqual(`fa fa-signal ${props.spot.dificulty}`)
+      it('should render an SpotInfo component per spot property but id', () => {
+        const totalSpotInfo = component.find('SpotInfo')
+        const minMaxRoutes = 2
+        const totalSpotInfoExpected = Object.keys(props.spot).filter(s => s !== 'id')
+
+        expect(totalSpotInfo.length).toBe(totalSpotInfoExpected.length + minMaxRoutes)
       })
     })
     describe('when the user click on spot rendered', () => {

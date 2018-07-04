@@ -1,4 +1,7 @@
 import React from 'react'
+import classNames from 'classnames'
+
+import SpotInfo from '../../common/SpotInfo'
 
 if (process.browser) {
   require('./SpotLabel.scss')
@@ -11,21 +14,17 @@ const SpotLabel = ({
   status
 }) => (
   <div
-      className={`spotLabel ${status} ${spotHovered === spot.id ? 'onover' : ''}`}
+      className={classNames('spotLabel', status, spotHovered === spot.id && 'onover')}
       onMouseOver={() => onOverSpot(spot.id)}
       onMouseLeave={() => onOverSpot(undefined)}
     >
     {
       spot.stars &&
-        <div className="area stars">
-          {spot.stars} <i className="fa fa-star" aria-hidden="true"></i>
-        </div>
+        <SpotInfo customClasses='stars' text={spot.stars} totalIcons={1} iconClass='fa fa-star'/>
     }
     {
       spot.dificulty &&
-        <div className="area dificulty">
-          <i className={`fa fa-signal ${spot.dificulty}`}></i>
-        </div>
+        <SpotInfo customClasses='dificulty' totalIcons={1} iconClass={['fa', 'fa-signal', spot.dificulty]}/>
     }
   </div>
 )

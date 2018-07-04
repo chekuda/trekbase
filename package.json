@@ -26,6 +26,7 @@
     "babel-register": "^6.26.0",
     "bootstrap-4-grid": "^2.4.0",
     "chokidar": "^2.0.3",
+    "classnames": "^2.2.6",
     "compression-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.7",

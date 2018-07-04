@@ -18,10 +18,10 @@ describe('SpotLabel', () => {
         expect(component.find('.spotLabel').length).toBe(1)
       })
       it('should render the stars area within markup', () => {
-        expect(component.find('.area.stars').length).toBe(1)
+        expect(component.find('SpotInfo').findWhere(ele => ele.props().customClasses === 'stars').length).toBe(1)
       })
       it('should render the dificulty area within markup', () => {
-        expect(component.find('.area.dificulty').length).toBe(1)
+        expect(component.find('SpotInfo').findWhere(ele => ele.props().customClasses === 'dificulty').length).toBe(1)
       })
     })
     describe('when star of spot is no passed by props', () => {
@@ -33,7 +33,7 @@ describe('SpotLabel', () => {
       const component = shallow(<SpotLabel {...props}/>)
       it('spot is rendered with not stars markup', () => {
         expect(component.find('.spotLabel').length).toBe(1)
-        expect(component.find('.area.stars').length).toBe(0)
+        expect(component.find('SpotInfo').findWhere(ele => ele.props().customClasses === 'stars').length).toBe(0)
       })
     })
     describe('when dificulty of spot is no passed by props', () => {
@@ -45,7 +45,7 @@ describe('SpotLabel', () => {
       const component = shallow(<SpotLabel {...props}/>)
       it('spot is rendered with not stars markup', () => {
         expect(component.find('.spotLabel').length).toBe(1)
-        expect(component.find('.area.dificulty').length).toBe(0)
+        expect(component.find('SpotInfo').findWhere(ele => ele.props().customClasses === 'dificulty').length).toBe(0)
       })
     })
     describe('when spot hovered passed', () => {
@@ -59,7 +59,6 @@ describe('SpotLabel', () => {
         const component = shallow(<SpotLabel {...props}/>)
         it('spotLabel should have class onover', () => {
           expect(component.find('.spotLabel.onover').length).toBe(1)
-
         })
       })
       describe('and its different of the spot id passed by props', () => {

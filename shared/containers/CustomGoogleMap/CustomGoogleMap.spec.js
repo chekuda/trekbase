@@ -9,7 +9,7 @@ jest.mock('../../components/GoogleMap/Spot', () => () => 'Spot')
 
 jest.mock('google-map-react', () => ({ children }) => children)
 
-fdescribe('Given a CustomGoogleMap component', () => {
+describe('Given a CustomGoogleMap component', () => {
   describe('when first render', () => {
     const props = {
       mapState: {},
