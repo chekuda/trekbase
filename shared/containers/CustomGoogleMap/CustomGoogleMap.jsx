@@ -8,7 +8,7 @@ import Spot from '../../components/GoogleMap/Spot'
 import Sidebar from '../../components/GoogleMap/Sidebar'
 import { getOffset, spotsWithinBounds } from '../../utils/map'
 import { getMax, getMin } from '../../utils/math'
-import { spotSelection, setMapView, spotsToRender } from '../../redux/reducers/map'
+import { spotSelection, setMapView, spotsToRender, spotHovered } from '../../redux/reducers/map'
 
 export class CustomGoogleMap extends Component {
   constructor(props) {
@@ -97,8 +97,32 @@ export class CustomGoogleMap extends Component {
     }
   }
 
+  handleSpotSeleted = (id) => {
+    const { spotSelection } = this.props
+
+    spotSelection({ spotSelected: id })
+  }
+
+  handleSpotHovered = (id) => {
+    const { spotHovered } = this.props
+
+    spotHovered({ spotHovered: id })
+  }
+
+  handleSpotUnselected() {
+    const { spotHovered } = this.props
+
+    spotHovered({ spotHovered: null })
+  }
+
   render() {
-    const { center, zoom, spotsToRender } = this.props.mapState
+    const {
+      center,
+      zoom,
+      spotsToRender,
+      spotSelected,
+      spotHovered
+    } = this.props.mapState
 
     return (
         <Fragment>
@@ -127,7 +151,12 @@ export class CustomGoogleMap extends Component {
                         <Spot
                           status={status}
                           spot={spot}
+                          spotSelected={spotSelected}
+                          spotHovered={spotHovered}
                           fitSpotCardOnMap={this.fitSpotCardOnMap}
+                          handleSpotSeleted={this.handleSpotSeleted}
+                          handleSpotHovered={this.handleSpotHovered}
+                          handleSpotUnselected={this.handleSpotUnselected}
                         />
                       )
                     }
@@ -152,6 +181,7 @@ export class CustomGoogleMap extends Component {
 const mapDispatchToProps = dispatch => ({
   spotSelection: spot => dispatch(spotSelection(spot)),
   setMapView: data => dispatch(setMapView(data)),
+  spotHovered: spot => dispatch(spotHovered(spot)),
   spotsToRender: spots => dispatch(spotsToRender(spots))
 })
 

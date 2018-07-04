@@ -78,7 +78,7 @@ class SpotCard extends Component {
           onClick={ev => this.onClickPreventBubble(ev, id)}
           onMouseOver={() => onOverSpot(id)}
         >
-          <div className='close' onClick={() => onClickClose(null)}>
+          <div className='close' onClick={onClickClose}>
             <i className='fa fa-close'></i>
           </div>
           <div className='slider'>
