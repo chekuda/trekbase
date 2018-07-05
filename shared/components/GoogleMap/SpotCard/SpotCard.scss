@@ -43,6 +43,9 @@
     cursor: pointer;
     transform: scale(0);
 
+    &-card {
+      width: 100%;
+    }
     & .close {
       display: none;
     }
@@ -195,8 +198,11 @@
 
     & .spotCard {
       flex-wrap: wrap;
-      max-width: 50%;
       min-width: 50%;
+
+      &-card {
+        width: 50%;
+      }
     }
   }
 

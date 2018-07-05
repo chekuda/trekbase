@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import Transition from 'react-transition-group/Transition'
-import classNames from 'classnames'
 
-import Carousel from '../../common/Carousel'
-import SpotInfo from '../../common/SpotInfo'
+import Card from '../../common/Card'
 import { getMin, getMax } from '../../../utils/math'
 
 if (process.browser) {
@@ -45,24 +43,52 @@ class SpotCard extends Component {
     }
   }
 
+  setCardDetails() {
+    const { spot } = this.props
+    if (!spot) return []
+
+    return Object.keys(spot).reduce((acc, ele) => {
+      switch (ele) {
+        case 'title':
+          return { ...acc, info: acc.info.concat({ text: spot[ele], customClasses: 'font-20' }) }
+        case 'maxHight':
+          return { ...acc, info: acc.info.concat({ text: spot[ele], description: 'Max-hight' }) }
+        case 'routes':
+          return {
+            ...acc,
+            info: acc.info.concat(
+              { text: spot[ele].length, description: 'Routes' },
+              // { text: this.maxHours, description: 'Max hours:' },
+              // { text: this.minHours, description: 'Min hours:' }
+            )
+          }
+        case 'stars':
+          return {
+            ...acc,
+            rate: acc.rate.concat({
+              text: spot[ele], customClasses: ele, totalIcons: spot[ele], iconClass: 'fa fa-star'
+            })
+          }
+        case 'dificulty':
+          return { ...acc, rate: acc.rate.concat({ customClasses: 'font-20', totalIcons: 1, iconClass: ['fa', 'fa-signal', spot[ele]] }) }
+        case 'imageList':
+          return { ...acc, slides: spot[ele] }
+        case 'id':
+          return { ...acc, id: spot[ele] }
+        default:
+          return acc
+      }
+    }, { info: [], rate: [] })
+  }
+
   render() {
     const {
-      spot,
       spotToRender,
       spotSelected = '',
       onClickClose,
       onOverSpot = this.noop,
       isHovered
     } = this.props
-
-    const {
-      dificulty = '',
-      stars,
-      text,
-      maxAltitude,
-      routes,
-      id
-    } = spot
 
     return (
       <Transition
@@ -72,29 +98,14 @@ class SpotCard extends Component {
       >
       {
         status =>
-        <div
-          ref={this.myCard}
-          className={classNames('spotCard', status, spotSelected, isHovered)}
-          onClick={ev => this.onClickPreventBubble(ev, id)}
-          onMouseOver={() => onOverSpot(id)}
-        >
-          <div className='close' onClick={onClickClose}>
-            <i className='fa fa-close'></i>
-          </div>
-          <div className='slider'>
-            <Carousel spot={spot}/>
-          </div>
-          <div className='info'>
-            <SpotInfo text={text} customClasses='font-20'/>
-            { maxAltitude && <SpotInfo text={maxAltitude} description='Max-hight:'/> }
-            { routes.length && <SpotInfo text={routes.length} description='Routes:'/> }
-            { this.maxHours !== 0 && <SpotInfo text={this.maxHours} description='Max hours:'/> }
-            { this.minHours !== 0 && <SpotInfo text={this.minHours} description='Min hours:'/> }
-            <div className='rates'>
-              { stars && <SpotInfo text={stars} customClasses='stars' totalIcons={stars} iconClass={'fa fa-star'}/> }
-              { dificulty && <SpotInfo totalIcons={1} customClasses='font-20' iconClass={['fa', 'fa-signal', dificulty]}/> }
-            </div>
-          </div>
+        <div ref={this.myCard} className='spotCard-card'>
+          <Card
+            customClasses={['spotCard', status, spotSelected, isHovered]}
+            handleOnClick={this.onClickPreventBubble}
+            onOver={onOverSpot}
+            onClose={onClickClose}
+            element={this.setCardDetails()}
+          />
         </div>
       }
       </ Transition>

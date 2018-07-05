@@ -9,7 +9,7 @@ class Carousel extends Component {
   constructor(props) {
     super(props)
 
-    this.slides = this.props.spot.imageList || []
+    this.slides = this.props.slides || []
     this.state = {
       slideSelected: 0,
       onOverClass: ''

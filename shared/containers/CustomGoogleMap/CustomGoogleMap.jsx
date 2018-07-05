@@ -109,10 +109,10 @@ export class CustomGoogleMap extends Component {
     spotHovered({ spotHovered: id })
   }
 
-  handleSpotUnselected() {
-    const { spotHovered } = this.props
+  handleSpotUnselected = () => {
+    const { spotSelection } = this.props
 
-    spotHovered({ spotHovered: null })
+    spotSelection({ spotSelected: null })
   }
 
   render() {
