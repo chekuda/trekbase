@@ -7,11 +7,15 @@ import { Provider } from 'react-redux'
 
 import App from '../../../shared/components/App'
 import configureStore from '../../../shared/redux/configureStore'
+import dummySpots from '../../dummySpots'
 
 export default (req, res) => {
   const context = {}
   const initialState = {
-    mapReducer: {}
+    spots: dummySpots(),
+    map: {
+      continentSelected: 'europe'
+    }
   }
 
   const store = configureStore(initialState)

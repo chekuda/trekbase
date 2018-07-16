@@ -7,15 +7,15 @@ const config = {
     './shared/index.js',
     './shared/styles/index.scss'
   ],
-  devtool: 'source-map', //webpack.js.org/configuration/devtool
+  devtool: 'source-map',
   plugins: [
     new UglifyJsWebpackPlugin({
-      sourceMap: true //dont strip the footer of the bundle
+      sourceMap: true
     }),
     new CompressionWebpackPlugin({
-      assets:'[path].gz[query]',
-      algorithm:'gzip',
-      test: /\.(js|html|css)$/, //Regex to get all the files with that extension
+      assets: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.(js|html|css)$/,
       threshold: 10240,
       minRatio: 0.8
     })

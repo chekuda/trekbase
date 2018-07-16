@@ -2,25 +2,21 @@ import commonPaths from './webpack.common-paths'
 import htmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-// Common configuration
 const config = {
-  // output file
   output: {
-    // Outpuf file name
-    filename: 'bundle.js', // create new bundle everytime
-    // Path where the output file will be saved
+    filename: 'bundle.js',
     path: commonPaths.outputPath,
-    publicPath: '/static/' // Need this for express serving our assets.
+    publicPath: '/static/'
   },
   module: {
     rules: [
       {
-        test: /\.png/, // extension of files to be affected by this rule
+        test: /\.png/,
         use: [
           {
-            loader: 'url-loader', // will conver any assets requested by js or css into B64 string and inject themn in the bundle
+            loader: 'url-loader',
             options: {
-              limit: 30000 // limit of the image
+              limit: 30000
             }
           }
         ]
@@ -36,7 +32,6 @@ const config = {
           }
         ]
       }, {
-        // Add font-awesome files
         test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
         use: [
           {
@@ -58,7 +53,7 @@ const config = {
       },
       {
         test: /\.scss$/,
-        loader: [
+        use: [
           'extracted-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',

@@ -30,12 +30,12 @@ module.exports = () => {
     },
     target: 'node',
     plugins: [
-      new webpack.IgnorePlugin(/\.(css|less)$/),
+      new webpack.IgnorePlugin(/\.(css|less|scss)$/),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin()
     ],
     resolve: {
-      extensions: ['.js', '.json', '.jsx'] //Add this in order to dont indicate the extension when import it
+      extensions: ['.js', '.json', '.jsx']
     }
   }
 }

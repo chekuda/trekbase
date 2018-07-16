@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
-export class ContinentHikes extends Component {
+import CustomGoogleMap from '../../containers/CustomGoogleMap'
+
+if (process.browser) {
+  require('./ContinentHikes.css')
+}
+
+export default class ContinentHikes extends Component {
   render() {
     return (
-      <div className="continenthikes-page">
-        ContentHikePage {this.props.name}
+      <div className="container-fluid">
+        <div className="row">
+          <CustomGoogleMap />
+        </div>
       </div>
     )
   }
 }
-
-const mapStateToProps = ({ map }) => ({
-  mapState: map
-})
-
-export default connect(
-  mapStateToProps
-)(ContinentHikes)
 
